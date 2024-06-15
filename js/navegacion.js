@@ -1,31 +1,21 @@
-// Creación de la cabecera
-const cabecera = document.createElement('header');
-const navegacion = document.createElement('nav');
-const nav = document.createElement('ul');
-cabecera.appendChild(navegacion);
-navegacion.appendChild(nav);
-navegacion.className = 'navbar';
+document.addEventListener('DOMContentLoaded', function() {
+    const main = document.querySelector('.main'); 
+    const buttonToggle = document.getElementById('toggle-button');
 
-// Estilos, agregar a laos productos
-cabecera.style.backgroundColor = 'lightgreen';
-document.body.style.backgroundColor = "#f3dbc3";
+    buttonToggle.classList.add('button_grey'); 
 
+    buttonToggle.addEventListener('click', function() {
+        main.classList.toggle('dark-mode'); 
+        updateButtonText();
+    });
 
-// Agregar la cabecera al cuerpo del documento
-document.body.appendChild(cabecera);
+    function updateButtonText() {
+        if (main.classList.contains('dark-mode')) {
+            buttonToggle.textContent = 'Cambiar a modo claro';
+        } else {
+            buttonToggle.textContent = 'Cambiar a modo oscuro';
+        }
+    }
 
-// Páginas
-const links = ["Index", "Productos", "Contacto"];
-
-
-// Recorrer las páginas y asignarles un href
-for (const link of links) {
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="${link.toLowerCase()}.html">${link}</a>`;
-    nav.appendChild(li);
-}
-
-
-//contenedor de productos
-const divProducto = document.createElement('div');
-document.body.appendChild(divProducto);
+    updateButtonText();
+});

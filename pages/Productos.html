@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
 </head>
-<body>
+<body id="">
     <header class="headerConteiner">
         <div class="divImg"><a href=""><img src="/remeraSinFondo.png" alt="Remera deportiva"></a></div>
         
@@ -21,23 +21,24 @@
         </nav>
     </div>
     </header>
-    <button id="toggle-button">Cambiar a modo oscuro</button>
+    
     <main class="main">
-
-        <h1>Mis productos</h1>
+        <button id="toggle-button">Cambiar a modo oscuro</button>
+        <h1 id="product_h1">Mis productos</h1>
         <div id="product-list">
             <!-- mi lista -->
         </div>
-        <h3>Carrito de Compras</h3>
+        <h3 class="cart_title">Carrito de Compras</h3>
         <div id="cart">
             <!-- mostrarse -->
         </div>
 
+        <div id="error_carrito"></div>
 
 
     </main>
 
-    <!-- <script src="./js/navegacion.js"></script> -->
+    <script src="/js/navegacion.js"></script>
     <script src="/js/productos.js"></script>
 </body>
 </html>
