@@ -68,8 +68,7 @@ button {
     margin: 0 auto 20px;
     padding: 10px 20px;
     background-color: #4CAF50; 
-    color: white; 
-    border: none;
+    color: #000000; 
     border-radius: 4px;
     cursor: pointer; /* provisorio en js */
 }
@@ -109,19 +108,52 @@ button:hover {
 
 
 
+
+
 /* contacto */
 
-
-#divForm{
-    height: 30%;
-    gap: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+#divForm {
+    max-width: 600px;
+    margin: 0 auto; 
 }
 
+form {
+    display: grid;
+    gap: 10px;
+}
 
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#submitButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#submitButton:hover {
+    background-color: #45a049;
+}
 
 
 /* navegacion */

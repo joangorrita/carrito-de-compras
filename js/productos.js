@@ -45,7 +45,6 @@ function addToCart(productId, quantity) {
             totalPrice: quantity * product.price
         });
     }
-
     saveCartToLocalStorage();
     renderCart();
 }
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function testError() {
-    addToCart(a, b); 
+    addToCart(1, 2); 
 }
 testError();
 
