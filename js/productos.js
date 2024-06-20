@@ -1,14 +1,3 @@
-// llamados
-const headerConteiner= document.getElementsByClassName("headerConteiner");
-
-const navbar= document.getElementsByClassName("navbar");
-
-const navbarA= document.getElementsByClassName("navbarA");
-
-const main= document.getElementsByClassName("main");
-
-
-
 const products = [
     {id: 1, name: "Camiseta", price: 10080},
     {id: 2, name: "Short", price: 17000},
@@ -21,6 +10,7 @@ const products = [
 let cart = loadCartFromLocalStorage();
 const errorCarritoDiv = document.getElementById('error_carrito');
 errorCarritoDiv.style.color = 'red';
+
 function mandarMjeDeError(productId){
     errorCarritoDiv.innerHTML = `<p>Producto con ID: ${productId} no encontrado</p>`;    
 }
@@ -74,6 +64,42 @@ function renderCart() {
     });
 }
 
+function renderCart() {
+    const cartDiv = document.getElementById('cart');
+    cartDiv.innerHTML = '';
+    cart.forEach(item => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.innerHTML = `
+            <p>ID: ${item.id}, Nombre: ${item.name}, Cantidad: ${item.quantity}, Precio Total: $${item.totalPrice}</p>
+            <button onclick="removeFromCart(${item.id})" class="button_red">Eliminar</button>
+        `;
+
+        const deleteButton = cartItemDiv.querySelector('button');
+        deleteButton.addEventListener('click', () => removeFromCart(item.id));
+
+        cartDiv.appendChild(cartItemDiv);
+    });
+}
+
+
+function removeFromCart(productId) {
+    const index = cart.findIndex(item => item.id === productId);
+    if (index !== -1) {
+        if (cart[index].quantity > 1) {
+            cart[index].quantity -= 1;
+            cart[index].totalPrice -= cart[index].price;
+        } else {
+            cart.splice(index, 1);
+        }
+        saveCartToLocalStorage();
+        renderCart();
+    } else {
+        mandarMjeDeError(productId); 
+    }
+}
+
+
+
 function saveCartToLocalStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
@@ -87,9 +113,3 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     renderCart();
 });
-
-function testError() {
-    addToCart(1, 2); 
-}
-testError();
-
